@@ -1,0 +1,13 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch:tailwind": "npx tailwindcss -i ./tailwind.css -o ./main.css --watch",
+    "build:tailwind": "npx tailwindcss -i ./tailwind.css -o ./main.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.1.8"
+  }
+}

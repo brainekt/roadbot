@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roadbot</title>
+    <link rel="stylesheet" href="./main.css" />
+
+    <!-- Alpine js  https://alpinejs.dev/ -->
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Nav section -->
+    <nav x-data="{mobileNav: false}" class="bg-blue-800">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <!-- Mobile menu button-->
+            <button
+              type="button"
+              class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+              @click="mobileNav = !mobileNav"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                x-show="!mobileNav"
+                class="block h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              <svg
+                class="block h-6 w-6"
+                x-show="mobileNav"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+          >
+            <div class="flex flex-shrink-0 items-center">
+              <h2 class="text-lg font-bold text-white">Roadbot</h2>
+            </div>
+            <div class="hidden sm:ml-6 sm:block">
+              <div class="flex space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a
+                  href="/"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  aria-current="page"
+                  >Home</a
+                >
+
+                <a
+                  href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Report</a
+                >
+
+                <a
+                  href="https://github.com/brainekt/roadbot"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >Code (Open-source)</a
+                >
+
+                
+              </div>
+            </div>
+          </div>
+          <div
+            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+          >
+            <a href="https://www.youtube.com/channel/UCfhXh4GbhjfSNY-aP0d7UdA" class="hover:brightness-200 transition inline-block">
+              <img
+                src="assets/YouTube_full-color_icon_(2017).svg"
+                alt="Youtube"
+                class="object-contain"
+                width="25"
+              />
+            </a>
+            <a
+              href="https://www.facebook.com/brainekt/"
+              class="hover:brightness-150 transition ml-3 sm:ml-4 inline-block"
+            >
+              <img
+                src="assets/Facebook_f_logo_(2019).svg"
+                alt="Facebook"
+                class="object-contain"
+                width="20"
+              />
+            </a>
+           
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div x-show="mobileNav" class="sm:hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pt-2 pb-3">
+
+          <a
+            href="/"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Home</a
+          >
+          <a
+            href="software.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Software</a
+          >
+
+          <a
+            href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Code</a
+          >
+
+          <a
+            href="./research.html"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            >Research</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- hero section -->
+    <section>
+      <div
+        class="max-w-6xl mx-auto md:flex items-center justify-between px-5 sm:px-10 py-7 min-h-[70vh] h-full"
+      >
+        <div class="mb-5 md:mb-0 flex-1">
+          <img
+            src="assets/gaze.PNG"
+            alt=""
+            class="w-full rounded-xl"
+          />
+        </div>
+        <div class="flex-1 md:pl-6">
+          <h2 class="text-2xl font-bold">
+            "RoadBot" - A Pose Detection Based Driving Assistance System
+          </h2>
+          <br>
+          <p class="text-gray-600">
+            A driving assistance module powered by the Raspberry PI - monitors driver activities remotely using computer vision algorithms.
+          </p>
+          <br>
+          <p class="text-gray-400">
+            <ul>
+            <li><strong>Business Lead / Fund management:</strong> <a href="https://bd.linkedin.com/in/khshuhatuddin">Kh Shuhat Uddin</a></li>
+
+            <li><strong>PI:</strong> <a href="https://scholar.google.com/citations?user=Fd1-G4YAAAAJ&hl=en&oi=ao">Zabir Al Nazi</a></li>
+
+          <li><strong>Research Engineer:</strong> <a href="https://github.com/Faisal-Al-Mamun">Faisal Al Mamun</a></li>
+        </ul>
+          </p>
+          <div class="mt-3">
+            <a
+              href="https://github.com/brainekt/roadbot"
+              class="inline-flex items-center space-x-1 text-blue-600 hover:brightness-125 transition font-semibold"
+            >
+              <span>Codebase [v0.5] (Open-source)</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- middle section -->
+    <!--
+    <section>
+      <div
+        class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-12 px-5 sm:px-10"
+      >
+        <div>
+          <a href="#">
+            <img
+              src="https://sebastianraschka.com/images/logos/lightning-ai.svg"
+              alt="Image"
+              class="object-contain h-9"
+            />
+          </a>
+          <p class="text-gray-600 mt-2">
+            I am also an Assistant Professor of
+            <a href="#" class="text-blue-500 hover:underline">Statistics</a> at
+            the
+            <a href="#" class="text-blue-500 hover:underline"
+              >University of Wisconsin-Madison</a
+            >, focusing on deep learning and machine learning research. Have a
+            look at my
+            <a href="#" class="text-blue-500 hover:underline"
+              >research projects</a
+            >
+            if you'd like to find out more.
+          </p>
+        </div>
+        <div>
+          <a href="#">
+            <img
+              src="https://sebastianraschka.com/images/logos/uw-logo.png"
+              alt="Image"
+              class="object-contain h-9"
+            />
+          </a>
+          <p class="text-gray-600 mt-2">
+            Moreover, I love open-source software and am a passionate
+            contributor. Next to coding, I also love writing and authored the
+            bestselling
+            <a href="#" class="text-blue-500 hover:underline"
+              >Python Machine Learning book</a
+            >
+            and
+            <a href="#" class="text-blue-500 hover:underline"
+              >Machine Learning with PyTorch and Scikit-Learn.</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <!-- News section -->
+    <section class="mt-12">
+      <div class="max-w-6xl mx-auto px-5 sm:px-10">
+        <h3
+          class="text-gray-800 text-lg sm:text-3xl font-bold mb-5 border-b pb-4 border-gray-300"
+        >
+          System Design [v1.3]
+        </h3>
+
+        <p align="center"><img
+          src="assets/system.PNG"
+          alt=""
+          class="w-full rounded-xl"
+        />
+      </p>
+        
+      </div>
+      <br>
+      <div class="max-w-6xl mx-auto px-5 sm:px-10">
+        <h3
+          class="text-gray-800 text-lg sm:text-3xl font-bold mb-5 border-b pb-4 border-gray-300"
+        >
+          Software Demo [v0.4]
+        </h3>
+
+        <p align="center"><iframe width="980" height="615"
+            src="https://www.youtube.com/embed/3tigqsRT2sg?autoplay=1&mute=1">
+        </iframe>
+      </p>
+        
+      </div>
+
+      <br>
+
+      <div class="max-w-6xl mx-auto px-5 sm:px-10">
+        <h3
+          class="text-gray-800 text-lg sm:text-3xl font-bold mb-5 border-b pb-4 border-gray-300"
+        >
+          Other Resources
+        </h3>
+        <div
+            class="block group hover:bg-gray-100 rounded-lg transition hover:cursor-default p-4"
+          >
+            <p class="text-gray-600 font-semibold text-base mb-1">
+              February, 2022
+            </p>
+            <p class="text-gray-700 text-base">
+              We benchmarked SOTA CNN models for <strong>emotion recognition in the wild</strong> task.
+              <a href="https://github.com/brainekt/EmotionsInTheWild-CNN-Benchmarks" class="text-blue-600 hover:underline"
+                >[GitHub Repository]</a
+              >
+
+            </p>
+            <a
+              href="https://github.com/brainekt/EmotionsInTheWild-CNN-Benchmarks"
+              class="inline-flex items-center space-x-2 text-blue-600 hover:brightness-110 transition-transform hover:cursor-pointer mt-3 font-medium"
+            >
+              <span>Read more</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </a>
+          </div>
+        <div
+            class="block group hover:bg-gray-100 rounded-lg transition hover:cursor-default p-4"
+          >
+            <p class="text-gray-600 font-semibold text-base mb-1">
+              April, 2021
+            </p>
+            <p class="text-gray-700 text-base">
+              We complied a dataset for <strong>emotion recognition in the wild</strong> task.
+              <a href="https://www.kaggle.com/competitions/brainekt-ai-lab-emotions-in-the-wild/overview" class="text-blue-600 hover:underline"
+                >[Kaggle Competition]</a
+              >
+
+            </p>
+            <a
+              href="https://www.kaggle.com/competitions/brainekt-ai-lab-emotions-in-the-wild/overview"
+              class="inline-flex items-center space-x-2 text-blue-600 hover:brightness-110 transition-transform hover:cursor-pointer mt-3 font-medium"
+            >
+              <span>Read more</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </a>
+          </div>
+        
+      </div>
+
+
+
+      <div class="max-w-6xl mx-auto px-5 sm:px-10">
+        <h3
+          class="text-gray-800 text-lg sm:text-3xl font-bold mb-5 border-b pb-4 border-gray-300"
+        >
+        Acknowledgement
+        </h3>
+        <div
+            class="block group hover:bg-gray-100 rounded-lg transition hover:cursor-default p-4"
+          >
+            <p class="text-gray-600 font-semibold text-base mb-1">
+              Funding
+            </p>
+            <p class="text-gray-700 text-base">
+              We are grateful to  <strong>ICT Division Bangladesh</strong> for funding this project.
+              <a href="https://ictd.gov.bd/" class="text-blue-600 hover:underline"
+                >[Research Funds]</a
+              >
+
+            </p>
+            <a
+              href="https://ictd.gov.bd/"
+              class="inline-flex items-center space-x-2 text-blue-600 hover:brightness-110 transition-transform hover:cursor-pointer mt-3 font-medium"
+            >
+              <span>Read more</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </a>
+          </div>
+        
+      </div>
+    </section>
+
+    <footer class="bg-blue-200 p-5 py-10 flex items-center justify-center mt-8">
+      <p class="text-center text-gray-700 text-sm">
+        &copy; 2019-2023 Brainekt AI Lab
+      </p>
+    </footer>
+  </body>
+</html>

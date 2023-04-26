@@ -1,0 +1,10 @@
+flask
+numpy
+scipy
+imutils
+cmake
+dlib
+pandas
+opencv-python
+tensorflow
+fer

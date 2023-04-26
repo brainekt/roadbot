@@ -1,0 +1,4 @@
+picamera
+requests
+numpy
+opencv-python
