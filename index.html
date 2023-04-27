@@ -13,6 +13,21 @@
       src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
   </head>
+  <style>
+    .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+  </style>
   <body>
     <!-- Nav section -->
     <nav x-data="{mobileNav: false}" class="bg-blue-800">
@@ -278,11 +293,14 @@
         >
           Software Demo [v0.4]
         </h3>
-
-        <p align="center"><iframe width="980" height="615"
+        
+        <div class="videoWrapper">
+        <p align="center"><iframe width='100%;' height='500px;' frameborder='0' scrolling='no'
             src="https://www.youtube.com/embed/3tigqsRT2sg?autoplay=1&mute=1">
         </iframe>
       </p>
+
+    </div>
         
       </div>
 
@@ -406,6 +424,11 @@
                 />
               </svg>
             </a>
+            <p align="center"><img
+              src="assets/ict_logo.png" width="10%" height="20px"
+              alt=""
+            />
+          </p>
           </div>
         
       </div>
